@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>JDN</title>
+</head>
+
+<body>
+    <div>
+        <center>
+            <h1 style="float: center;">Jaundice Detection Using Neural Network</h1>
+            <hr style="width: 20%; color:green;">
+            <h1 style="float:center">Report</h1>
+        </center>
+    </div>
+    <img class="sticky" style="float: right;" src="{{ imgpath }}" alt="Avatar">
+    <h4 class="sticky">{{eyepath}}</h4>
+
+
+
+    </head>
+
+    <div class="container">
+        <center>
+            <br>
+
+            <hr style="width: 100%;">
+            <h2>{{name}}</h2>
+            <table class="table table-hover">
+                <tbody>
+
+                    <tr>
+                        <td>Patient Id</td>
+                        <td>:</td>
+                        <td>{{patient_id}}</td>
+                    </tr>
+                    <tr>
+                        <td>Type</td>
+                        <td>:</td>
+                        <td>{{type}}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td>{{name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>:</td>
+                        <td>{{gender}}</td>
+                    </tr>
+                    <tr>
+                        <td>Father Name</td>
+                        <td>:</td>
+                        <td>{{father_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Mother Name</td>
+                        <td>:</td>
+                        <td>{{mother_name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Age</td>
+                        <td>:</td>
+                        <td>{{age}}</td>
+                    </tr>
+                    <tr>
+                        <td>dob</td>
+                        <td>:</td>
+                        <td>{{name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>:</td>
+                        <td>{{address}}</br>{{pincode}}</td>
+                    </tr>
+                    <tr>
+                        </hr>
+
+                </tbody>
+            </table>
+
+            <hr>
+            <br>
+            <table class="table">
+                <td>Fever</td>
+                <td>:</td>
+                <td>{%if fever %} True {% else %} False {% endif %}</td>
+                </tr>
+                <tr>
+                    <td>Cough</td>
+                    <td>:</td>
+                    <td>{%if cough %} True {% else %} False {% endif %}</td>
+                </tr>
+                <tr>
+                    <td>Headache</td>
+                    <td>:</td>
+                    <td>{%if headheach %} True {% else %} False {% endif %}</td>
+                </tr>
+                <tr>
+                    <td>Hitching Of Skin</td>
+                    <td>:</td>
+                    <td>{%if hitching_skin %} True {% else %} False {% endif %}</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>Hitching Of Eye</td>
+                    <td>:</td>
+                    <td>{%if hitching_eye %} True {% else %} False {% endif %}</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>Yellowing Of Eye</td>
+                    <td>:</td>
+                    <td>{{yellowing_of_eye}}</td>
+                </tr>
+                </tr>
+                <tr>
+                    <td>Yellowing Of Skin</td>
+                    <td>:</td>
+                    <td>{%if yellowing_of_skin %} True {% else %} False {% endif %}
+                    </td>
+                </tr>
+
+            </table>
+            <hr>
+            <h2 style="color:{{ color }};"> RESULT : {{yellowing_of_eye}}</h2>
+
+
+
+            <button onclick="location.href = '/'"><a href="/">Home</a></button>
+
+            <button onclick="location.href = '/AddPatient'"><a  href="/AddPatient">Back</a></button>
+            <br>
+            <hr> Review the Result
+            <button onclick="location.href = '/'">True</button><button onclick="location.href = '/'">False</button>
+            <br>
+    </div>
+    </center>
+
+</body>
+<style type="text/css">
+    body {
+        font-family: "Times New Roman", Times, serif;
+        background: #9eb0a1;
+    }
+    
+    img {
+        width: 150px;
+        height: 150px;
+    }
+    
+    hr {
+        width: 50%;
+    }
+    
+    img.sticky,
+    h4.sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 20px;
+        width: 200px;
+    }
+    
+    .table {
+        border: black 2px;
+        width: 20%;
+        margin: 5px;
+    }
+    
+    tr {
+        border: black solid 5px;
+        width: 30%;
+        height: 25px;
+        margin: 5px;
+    }
+    
+    td {
+        width: 50px;
+        height: inherit;
+        margin: 20px;
+    }
+</style>
+
+</html>

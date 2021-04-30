@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta http-equiv="refresh" content="3; url = http://127.0.0.1:8000/done" ?>
+</head>
+
+
+<body onLoad="javascrip:move()" action="done">
+
+    <div class="container">
+        <h2>Machine Training in progress</h2>
+        <p>Wait for some time</p>
+        <div class="progress" id="myProgress">
+            <div id="myBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<style>
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+    
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
+</style>
+
+
+
+
+<script>
+    var i = 0;
+
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 3000);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+</script>

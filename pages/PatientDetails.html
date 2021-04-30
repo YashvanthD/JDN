@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DJN</title>
+</head>
+
+<body bgcolor="#ffff90">
+    <div>
+        <center>
+
+            <h1 style="color: green">
+                Detection Of Jaundice
+            </h1>
+            <hr style="width: 70%; color: red; size: 25px;">
+
+
+        </center>
+    </div>
+    <br>
+    <div>
+
+        <center>
+            <h2 style="color: red"> Will you Know your suffering form Jaundice </h2>
+            <h3>Then just Enter Your details below</h3>
+        </center>
+    </div>
+
+    <br>
+
+    <div>
+        <center>
+            <h3 style="text-align: center;align-content: center;">Patient Details</h3>
+
+            <table>
+                <form method="POST" action="Add" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <tr>
+                        <td>Patient Type</td>
+                        <td>:</td>
+                        <td><select name="type"><option value="infant">Infant(new Born Baby)</option>
+				<option value="adult">Adults</option></select></td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>:</td>
+                        <td><input type="text" name="name"></td>
+                    </tr>
+                    <tr>
+                        <td>Father Name</td>
+                        <td>:</td>
+                        <td><input type="text" name="fname"></td>
+                    </tr>
+
+                    <tr>
+                        <td>Mother Name</td>
+                        <td>:</td>
+                        <td><input type="text" name="mname"></td>
+                    </tr>
+                    <tr>
+                        <td>age</td>
+                        <td>:</td>
+                        <td><input type="number" name="age"></td>
+                    </tr>
+                    <tr>
+                        <td>gender</td>
+                        <td>:</td>
+                        <td>
+                            <select name="gender">
+					<option value="male">Male</option>
+					<option value="female">Female</option>
+					<option value="others">Others</option>
+			</select></td>
+                    </tr>
+                    <tr>
+                        <td>Date of Birth</td>
+                        <td>:</td>
+                        <td><input type="date" name="dob"></td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>:</td>
+                        <td><textarea name="address"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>pincode</td>
+                        <td>:</td>
+                        <td><input type="number" min="000000" max="999999" maxlength="6" name="pincode"></td>
+                    </tr>
+
+            </table>
+            <br>
+            <br>
+            <table>
+                <tr>
+                    <th>Symptoms</th>
+                </tr>
+            </table>
+
+            <table>
+                <center>
+                    <tr>
+                        <td>Fever</td>
+                        <td>:</td>
+                        <td><input type="radio" name="fever" value="0">No</td>
+                        <td><input type="radio" name="fever" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Loss Of Hepatities</td>
+                        <td>:</td>
+                        <td><input type="radio" name="loss_of_hepatities" value="0">No</td>
+                        <td><input type="radio" name="loss_of_hepatities" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Tierdness</td>
+                        <td>:</td>
+                        <td><input type="radio" name="tierdness" value="0">No</td>
+                        <td><input type="radio" name="tierdness" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Diarrhea </td>
+                        <td>:</td>
+                        <td><input type="radio" name="diarrhea" value="0">No</td>
+                        <td><input type="radio" name="diarrhea" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Nausea</td>
+                        <td>:</td>
+                        <td><input type="radio" name="nausea" value="0">No</td>
+                        <td><input type="radio" name="nausea" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Abdominal pain</td>
+                        <td>:</td>
+                        <td><input type="radio" name="abdominal_pain" value="0">No</td>
+                        <td><input type="radio" name="abdominal_pain" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Cough</td>
+                        <td>:</td>
+                        <td><input type="radio" name="cough" value="0">No</td>
+                        <td><input type="radio" name="cough" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Head ache</td>
+                        <td>:</td>
+                        <td><input type="radio" name="headache" value="0">No</td>
+                        <td><input type="radio" name="headache" value="1">Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Hitching like skin</td>
+                        <td>:</td>
+                        <td><input type="radio" name="hitchingskin" value="0">No</td>
+                        <td><input type="radio" name="hitchingskin" value="1">Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Hitching like eye</td>
+                        <td>:</td>
+                        <td><input type="radio" name="hitchingeye" value="0">No</td>
+                        <td><input type="radio" name="hitchingeye" value="1">Yes</td>
+                    </tr>
+
+            </table>
+            </center>
+
+            <br>
+
+            <center>
+                <table>
+                    <tr>
+                        <th>Just Observe Once </th>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td>Yellowing of skin</td>
+                        <td>:</td>
+                        <td><input type="radio" name="yellowingskin" value="0">No</td>
+                        <td><input type="radio" name="yellowingskin" value="1">Yes</td>
+                    </tr>
+
+                    <tr>
+                        <td>Yellowing of eye</td>
+                        <td>:</td>
+                        <td><input type="radio" name="yellowingeye" value="0">No</td>
+                        <td><input type="radio" name="yellowingeye" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Yellowing of Palm</td>
+                        <td>:</td>
+                        <td><input type="radio" name="yellowingpalm" value="0">No</td>
+                        <td><input type="radio" name="yellowingpalm" value="1">Yes</td>
+                    </tr>
+                    <tr>
+                        <td>Yellowing of Nails</td>
+                        <td>:</td>
+                        <td><input type="radio" name="yellowingnails" value="0">No</td>
+                        <td><input type="radio" name="yellowingnails" value="1">Yes</td>
+                    </tr>
+                </table>
+                <br>
+                <table>
+                    <tr>
+
+                        <b>Images</b>
+                        <tr>
+                            <td>Eye</td>
+                            <td> : </td>
+                            <td><input id="image" type="file" name="eyeimg" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Skin</td>
+                            <td> : </td>
+                            <td><input type="file" name="skinimg">
+                            </td>
+                        </tr>
+                    </tr>
+                    <tr>
+
+                    </tr>
+
+                </table>
+
+                <hr style="width: 30%;">
+                <input type="submit" name="submit" value="Get Report" style="background: green;font: 25px;color:white">
+            </center>
+            </form>
+
+
+            </table>
+        </center>
+        <Center><button onclick="location.href = '/'">Home</button></Center>
+        <br><br>
+    </div>
+
+</body>
+
+
+</html>

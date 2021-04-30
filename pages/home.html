@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>JDN</title>
+</head>
+
+<body bgcolor="#c5abc7">
+
+    <center>
+        <br>
+        <h1>Jaundice Detection Using Neural Network</h1>
+        <form action="/wait" method="POST">
+            {% csrf_token %}
+
+            <input style="width: 10%;" type="Submit" value="Train">
+        </form>
+
+        <form action="/AddPatient" method="POST">
+            {% csrf_token %}
+            <input style="width: 10%;" type="Submit" value="Check" onclick="move()">
+        </form>
+
+
+        </head>
+
+
+
+
+
+</body>
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<style>
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+    
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
+</style>
+
+
+
+
+<script>
+    var i = 0;
+
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            var id = setInterval(frame, 1000);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                }
+            }
+        }
+    }
+</script>
+</center>
+
+</body>
+
+</html>
