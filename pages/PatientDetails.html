@@ -1,242 +1,804 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>DJN</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>JDN</title>
 </head>
 
-<body bgcolor="#ffff90">
-    <div>
-        <center>
+<body bgcolor="#c5abc7">
 
-            <h1 style="color: green">
-                Detection Of Jaundice
-            </h1>
-            <hr style="width: 70%; color: red; size: 25px;">
+    <center>
+        <header>
+            <h1>Jaundice Detection Using Neural Network</h1>
+        </header>
+
+        </head>
+
+        <section style="color: white;">
+            <nav id="navbar">
 
 
-        </center>
-    </div>
-    <br>
-    <div>
-
-        <center>
-            <h2 style="color: red"> Will you Know your suffering form Jaundice </h2>
-            <h3>Then just Enter Your details below</h3>
-        </center>
-    </div>
-
-    <br>
-
-    <div>
-        <center>
-            <h3 style="text-align: center;align-content: center;">Patient Details</h3>
-
-            <table>
-                <form method="POST" action="Add" enctype="multipart/form-data">
+                <form action="/" method="POST">
                     {% csrf_token %}
-                    <tr>
-                        <td>Patient Type</td>
-                        <td>:</td>
-                        <td><select name="type"><option value="infant">Infant(new Born Baby)</option>
-				<option value="adult">Adults</option></select></td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>:</td>
-                        <td><input type="text" name="name"></td>
-                    </tr>
-                    <tr>
-                        <td>Father Name</td>
-                        <td>:</td>
-                        <td><input type="text" name="fname"></td>
-                    </tr>
+                    <input class="button3" style="width: 100%; " type="Submit" value="Home">
+                </form>
 
-                    <tr>
-                        <td>Mother Name</td>
-                        <td>:</td>
-                        <td><input type="text" name="mname"></td>
-                    </tr>
-                    <tr>
-                        <td>age</td>
-                        <td>:</td>
-                        <td><input type="number" name="age"></td>
-                    </tr>
-                    <tr>
-                        <td>gender</td>
-                        <td>:</td>
-                        <td>
-                            <select name="gender">
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-					<option value="others">Others</option>
-			</select></td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth</td>
-                        <td>:</td>
-                        <td><input type="date" name="dob"></td>
-                    </tr>
-                    <tr>
-                        <td>Address</td>
-                        <td>:</td>
-                        <td><textarea name="address"></textarea></td>
-                    </tr>
-                    <tr>
-                        <td>pincode</td>
-                        <td>:</td>
-                        <td><input type="number" min="000000" max="999999" maxlength="6" name="pincode"></td>
-                    </tr>
+                <form action="/wait" method="POST">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%;" type="Submit" value="Train ">
+                </form>
 
-            </table>
-            <br>
-            <br>
-            <table>
-                <tr>
-                    <th>Symptoms</th>
-                </tr>
-            </table>
+                <form action="/AddPatient " method="POST ">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%;" type="Submit" value="Get Report" onclick="move()">
+                </form>
 
-            <table>
-                <center>
-                    <tr>
-                        <td>Fever</td>
-                        <td>:</td>
-                        <td><input type="radio" name="fever" value="0">No</td>
-                        <td><input type="radio" name="fever" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Loss Of Hepatities</td>
-                        <td>:</td>
-                        <td><input type="radio" name="loss_of_hepatities" value="0">No</td>
-                        <td><input type="radio" name="loss_of_hepatities" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Tierdness</td>
-                        <td>:</td>
-                        <td><input type="radio" name="tierdness" value="0">No</td>
-                        <td><input type="radio" name="tierdness" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Diarrhea </td>
-                        <td>:</td>
-                        <td><input type="radio" name="diarrhea" value="0">No</td>
-                        <td><input type="radio" name="diarrhea" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Nausea</td>
-                        <td>:</td>
-                        <td><input type="radio" name="nausea" value="0">No</td>
-                        <td><input type="radio" name="nausea" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Abdominal pain</td>
-                        <td>:</td>
-                        <td><input type="radio" name="abdominal_pain" value="0">No</td>
-                        <td><input type="radio" name="abdominal_pain" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Cough</td>
-                        <td>:</td>
-                        <td><input type="radio" name="cough" value="0">No</td>
-                        <td><input type="radio" name="cough" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Head ache</td>
-                        <td>:</td>
-                        <td><input type="radio" name="headache" value="0">No</td>
-                        <td><input type="radio" name="headache" value="1">Yes</td>
-                    </tr>
+                <button class="button3" onclick=window.location='/about'>About</button>
 
-                    <tr>
-                        <td>Hitching like skin</td>
-                        <td>:</td>
-                        <td><input type="radio" name="hitchingskin" value="0">No</td>
-                        <td><input type="radio" name="hitchingskin" value="1">Yes</td>
-                    </tr>
+            </nav>
 
-                    <tr>
-                        <td>Hitching like eye</td>
-                        <td>:</td>
-                        <td><input type="radio" name="hitchingeye" value="0">No</td>
-                        <td><input type="radio" name="hitchingeye" value="1">Yes</td>
-                    </tr>
+            <article style="background: #282b2c;">
+                <div>
+                    <center>
+                        <!-- 
+                        <h1 style="color: green">
+                            Detection Of Jaundice
+                        </h1>
+                        <hr style="width: 70%; color: red; size: 25px;"> -->
 
-            </table>
-            </center>
 
-            <br>
-
-            <center>
-                <table>
-                    <tr>
-                        <th>Just Observe Once </th>
-                    </tr>
-                </table>
-                <table>
-                    <tr>
-                        <td>Yellowing of skin</td>
-                        <td>:</td>
-                        <td><input type="radio" name="yellowingskin" value="0">No</td>
-                        <td><input type="radio" name="yellowingskin" value="1">Yes</td>
-                    </tr>
-
-                    <tr>
-                        <td>Yellowing of eye</td>
-                        <td>:</td>
-                        <td><input type="radio" name="yellowingeye" value="0">No</td>
-                        <td><input type="radio" name="yellowingeye" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Yellowing of Palm</td>
-                        <td>:</td>
-                        <td><input type="radio" name="yellowingpalm" value="0">No</td>
-                        <td><input type="radio" name="yellowingpalm" value="1">Yes</td>
-                    </tr>
-                    <tr>
-                        <td>Yellowing of Nails</td>
-                        <td>:</td>
-                        <td><input type="radio" name="yellowingnails" value="0">No</td>
-                        <td><input type="radio" name="yellowingnails" value="1">Yes</td>
-                    </tr>
-                </table>
+                    </center>
+                </div>
                 <br>
-                <table>
-                    <tr>
+                <div>
 
-                        <b>Images</b>
-                        <tr>
-                            <td>Eye</td>
-                            <td> : </td>
-                            <td><input id="image" type="file" name="eyeimg" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Skin</td>
-                            <td> : </td>
-                            <td><input type="file" name="skinimg">
-                            </td>
-                        </tr>
-                    </tr>
-                    <tr>
+                    <center>
+                        <h2 style="color: red"> Will you know your suffering form Jaundice </h2>
+                        <h3>Then just Enter Your details below</h3>
+                    </center>
+                </div>
 
-                    </tr>
+                <br>
 
-                </table>
+                <div>
+                    <center>
+                        <h3 style="text-align: center;align-content: center;">Patient Details</h3>
 
-                <hr style="width: 30%;">
-                <input type="submit" name="submit" value="Get Report" style="background: green;font: 25px;color:white">
-            </center>
-            </form>
+                        <table>
+                            <colgroup>
+                                <col span="1" style="width: 40%;">
+
+                            </colgroup>
+                            <form method="POST" action="Add" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <tr>
+                                    <td>Patient Type</td>
+                                    <td>:</td>
+                                    <td><select name="type"><option value="infant">Infant(new Born Baby)</option>
+                            <option value="adult">Adults</option></select></td>
+                                </tr>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>:</td>
+                                    <td><input type="text" name="name"></td>
+                                </tr>
+                                <tr>
+                                    <td>Father Name</td>
+                                    <td>:</td>
+                                    <td><input type="text" name="fname"></td>
+                                </tr>
+
+                                <tr>
+                                    <td>Mother Name</td>
+                                    <td>:</td>
+                                    <td><input type="text" name="mname"></td>
+                                </tr>
+                                <tr>
+                                    <td>age</td>
+                                    <td>:</td>
+                                    <td><input type="number" name="age"></td>
+                                </tr>
+                                <tr>
+                                    <td>gender</td>
+                                    <td>:</td>
+                                    <td>
+                                        <select name="gender">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                                <option value="others">Others</option>
+                        </select></td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth</td>
+                                    <td>:</td>
+                                    <td><input type="date" name="dob"></td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td>:</td>
+                                    <td><textarea name="address"></textarea></td>
+                                </tr>
+                                <tr>
+                                    <td>pincode</td>
+                                    <td>:</td>
+                                    <td><input type="number" min="000000" max="999999" maxlength="6" name="pincode"></td>
+                                </tr>
+
+                        </table>
+                        <br>
+                        <br>
+                        <table>
+                            <tr>
+                                <th>Symptoms</th>
+                            </tr>
+                        </table>
+
+                        <table>
+                            <col span="1" style="width: 40%;">
+                            <center>
+                                <tr>
+                                    <td>Fever</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="fever" value="0">No</td>
+                                    <td><input type="radio" name="fever" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Loss Of Hepatities</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="loss_of_hepatities" value="0">No</td>
+                                    <td><input type="radio" name="loss_of_hepatities" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Tierdness</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="tierdness" value="0">No</td>
+                                    <td><input type="radio" name="tierdness" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Diarrhea </td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="diarrhea" value="0">No</td>
+                                    <td><input type="radio" name="diarrhea" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Nausea</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="nausea" value="0">No</td>
+                                    <td><input type="radio" name="nausea" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Abdominal pain</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="abdominal_pain" value="0">No</td>
+                                    <td><input type="radio" name="abdominal_pain" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Cough</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="cough" value="0">No</td>
+                                    <td><input type="radio" name="cough" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Head ache</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="headache" value="0">No</td>
+                                    <td><input type="radio" name="headache" value="1">Yes</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Hitching like skin</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="hitchingskin" value="0">No</td>
+                                    <td><input type="radio" name="hitchingskin" value="1">Yes</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Hitching like eye</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="hitchingeye" value="0">No</td>
+                                    <td><input type="radio" name="hitchingeye" value="1">Yes</td>
+                                </tr>
+
+                        </table>
+                        </center>
+
+                        <br>
+                        <br>
+                        <center>
+                            <table>
+                                <col span="1" style="width: 40%;">
+                                <tr>
+                                    <th>Just Observe Once </th>
+                                </tr>
+                            </table>
+                            <table class="sym">
+                                <col span="1" style="width: 40%;">
+                                <tr>
+                                    <td>Yellowing of skin</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="yellowingskin" value="0">No</td>
+                                    <td><input type="radio" name="yellowingskin" value="1">Yes</td>
+                                </tr>
+
+                                <tr>
+                                    <td>Yellowing of eye</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="yellowingeye" value="0">No</td>
+                                    <td><input type="radio" name="yellowingeye" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Yellowing of Palm</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="yellowingpalm" value="0">No</td>
+                                    <td><input type="radio" name="yellowingpalm" value="1">Yes</td>
+                                </tr>
+                                <tr>
+                                    <td>Yellowing of Nails</td>
+                                    <td>:</td>
+                                    <td><input type="radio" name="yellowingnails" value="0">No</td>
+                                    <td><input type="radio" name="yellowingnails" value="1">Yes</td>
+                                </tr>
+                            </table>
+                            <br>
+                            <table>
+                                <tr>
+
+                                    <b>Images</b>
+                                    <tr>
+                                        <td>Eye</td>
+                                        <td> : </td>
+                                        <td><input id="image" type="file" name="eyeimg" required>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Skin</td>
+                                        <td> : </td>
+                                        <td><input type="file" name="skinimg">
+                                        </td>
+                                    </tr>
+                                </tr>
+                                <tr>
+
+                                </tr>
+
+                            </table>
+
+                            <hr style="width: 30%;">
+                            <input class="button3" type="submit" name="submit" value="Get Report" style="background: green;font: 25px;color:white; height: inherit; width: 300px;">
+                        </center>
+                        </form>
 
 
-            </table>
-        </center>
-        <Center><button onclick="location.href = '/'">Home</button></Center>
-        <br><br>
-    </div>
+                        </table>
+                    </center>
+
+                    <br><br>
+                </div>
+
+
+            </article>
+
+        </section>
+
+        <footer>
+            By team of Siddaganga Institute of Technology &#169
+        </footer>
+
+
+
 
 </body>
+<script>
+    function openTab(tabName) {
+        var i, x;
+        x = document.getElementsByClassName("containerTab");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        document.getElementById(tabName).style.display = "block";
+    }
+</script>
 
+<link rel="stylesheet " href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css ">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js "></script>
+<link rel="stylesheet " href="C:\Users\Admin\OneDrive\Desktop\Mini\CODES\DjangoDJN\JDN\pages\button.css ">
+
+</html>
+
+<!DOCTYPE html>
+<html>
+<style>
+    input[type=radio] {
+        border: 2px;
+        width: 25px;
+        height: 3rem;
+        margin: 10px;
+    }
+    
+    input[type=file] {
+        margin: 10px;
+    }
+    
+    input[type=text],
+    input[type=date],
+    input[type=number],
+    input[type=option],
+    textarea,
+    select {
+        color: black;
+        width: 250px;
+        margin: 10px;
+    }
+    
+    input[type=text]:hover,
+    input[type=date]:hover,
+    input[type=number]:hover,
+    input[type=option]:hover,
+    textarea:hover,
+    select:hover {
+        transform: scale(1.2);
+    }
+    
+    tr {
+        width: 100%;
+    }
+    
+    th {
+        width: 100px;
+        font: bold;
+        font-family: Georgia, 'Times New Roman', Times, serif Impact;
+        color: rgb(255, 255, 253);
+    }
+    
+    td,
+    th {
+        text-align: center;
+        font-stretch: inherit;
+        vertical-align: center;
+        align-content: center;
+        width: 100px;
+        color: white;
+        font-size: 20px;
+        margin: 20px;
+    }
+    
+    .column {
+        float: left;
+        width: 30%;
+        padding: 0 20px;
+    }
+    /* Remove extra left and right margins, due to padding */
+    
+    .row {
+        width: 100%;
+        margin: 0 50px;
+    }
+    /* Clear floats after the columns */
+    
+    .row:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    /* Responsive columns */
+    
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            margin: 0 0;
+        }
+    }
+    /* Style the counter cards */
+    
+    .card {
+        box-shadow: 0 8px 50px 20px rgba(2, 2, 2, 0.2);
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        background-color: #f1f1f1;
+    }
+    
+    .card:hover {
+        box-shadow: 0 80px 160px 0 rgba(245, 0, 0, 0.521);
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+        perspective: 1000px;
+        box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 20px 40px 0 rgba(255, 255, 255, 0.219);
+    }
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        box-shadow: 0 40px 100px 0 rgba(245, 0, 0, 0.521);
+    }
+    
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    .flip-card-front {
+        background-color: #bbb;
+        color: black;
+    }
+    
+    .flip-card-back {
+        background-color: #08f543a9;
+        color: rgb(0, 0, 0);
+        transform: rotateY(180deg);
+    }
+    
+    nav {
+        float: left;
+        width: 20%;
+        height: 3000px;
+        /* only for demonstration, should be removed */
+        background: #ccc;
+        padding: 20px;
+    }
+    
+    nav ul {
+        list-style-type: none;
+    }
+    
+    article {
+        float: left;
+        padding: 20px;
+        height: 3000px;
+        width: 80%;
+        background: rgb(248, 237, 237);
+        /* only for demonstration, should be removed */
+    }
+    /* Clear floats after the columns */
+    
+    section::after {
+        content: " ";
+        display: table;
+        clear: both;
+        height: 200%;
+        width: 80%;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    /* The grid: Three equal columns that floats next to each other */
+    
+    .column1 {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        cursor: pointer;
+        color: white;
+    }
+    
+    .containerTab1 {
+        padding: 20px;
+        color: white;
+    }
+    /* Clear floats after the columns */
+    
+    .row1:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Closable button inside the container tab */
+    
+    .closebtn1 {
+        float: right;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+    }
+    
+    .header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    #navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    
+    .content {
+        padding: 16px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 60px;
+    }
+    
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+    
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
+    
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    
+    .button:hover span {
+        padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button2 {
+        position: relative;
+        background-color: #4CAF50;
+        border: none;
+        font-size: 18px;
+        color: #FFFFFF;
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        transition-duration: 0.1s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .button2:after {
+        content: " ";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.2s
+    }
+    
+    .button2:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+    
+    .button3 {
+        display: inline-block;
+        padding: 15px 25px;
+        width: 100%;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 0px;
+        box-shadow: 0 15px #333;
+    }
+    
+    .button3:hover {
+        background-color: #3e8e41
+    }
+    
+    .button3:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* Style the header */
+    
+    header {
+        background-color: #666;
+        padding: 30px;
+        text-align: center;
+        font-size: 35px;
+        color: white;
+    }
+    /* Create two columns/boxes that floats next to each other */
+    /* Style the list inside the menu */
+    /* Style the footer */
+    
+    input.button {
+        width: 20%;
+        height: 20px;
+    }
+    
+    footer {
+        background-color: rgba(71, 71, 71, 0.349);
+        padding: 10px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        color: white;
+    }
+    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+    
+    @media (max-width: 600px) {
+        nav,
+        article {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    #navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    
+    .content {
+        padding: 16px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 60px;
+    }
+</style>
+
+
+
+
+<script>
+    var i = 0;
+
+    function move() {
+        if (i == 0) {
+            i = 1;
+            var elem = document.getElementById("myBar ");
+            var width = 1;
+            var id = setInterval(frame, 1000);
+
+            function frame() {
+                if (width >= 100) {
+                    clearInterval(id);
+                    i = 0;
+                } else {
+                    width++;
+                    elem.style.width = width + "% ";
+                }
+            }
+        }
+    }
+</script>
+</center>
+
+</body>
 
 </html>

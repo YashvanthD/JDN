@@ -1,63 +1,107 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-<meta http-equiv="refresh" content="3; url = http://127.0.0.1:8000/done" ?>
+<meta http-equiv="refresh" content="20; url = #" ?>
 </head>
 
 
-<body onLoad="javascrip:move()" action="done">
+<body>
+    <!-- <link rel="stylesheet" href="button.css"> -->
+    <!-- <div id="div1" class="fa"></div> -->
 
-    <div class="container">
-        <h2>Machine Training in progress</h2>
-        <p>Wait for some time</p>
-        <div class="progress" id="myProgress">
-            <div id="myBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
 
+
+
+    <div style="align-items: unset; align-self: start; align-content: unset;">
+
+        <body onLoad="javascrip:move()" action="done">
+
+            <div class="container">
+                <h1>Machine Training in progress</h1>
+                <h3>Wait for some time</h3>
+                <div class="progress" id="myProgress">
+                    <div id="myBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+
+                    </div>
+                </div>
             </div>
-        </div>
     </div>
 
-</body>
+    </body>
 
-</html>
+    </html>
 
-<!DOCTYPE html>
-<html>
-<style>
-    #myProgress {
-        width: 100%;
-        background-color: #ddd;
-    }
-    
-    #myBar {
-        width: 1%;
-        height: 30px;
-        background-color: #4CAF50;
-    }
-</style>
+    <!DOCTYPE html>
+    <html>
+    <!-- <img src="../media/about/logo.png" alt=""> -->
+    <style>
+        body {
+            color: white;
+            background: rgba(22, 22, 22, 0.979);
+            background-image: image(src="../media/about/logo.png");
+        }
+        
+        #myProgress {
+            width: 100%;
+            background-color: rgba(196, 194, 194, 0.979);
+        }
+        
+        #myBar {
+            width: 1%;
+            height: 30px;
+            background-color: #0f3523f5;
+        }
+    </style>
 
 
 
 
-<script>
-    var i = 0;
+    <script>
+        var i = 0;
 
-    function move() {
-        if (i == 0) {
-            i = 1;
-            var elem = document.getElementById("myBar");
-            var width = 1;
-            var id = setInterval(frame, 3000);
+        function move() {
+            if (i == 0) {
+                i = 1;
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 3000);
 
-            function frame() {
-                if (width >= 100) {
-                    clearInterval(id);
-                    i = 0;
-                } else {
-                    width++;
-                    elem.style.width = width + "%";
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                        i = 0;
+                    } else {
+                        width++;
+                        elem.style.width = width + "%";
+                    }
                 }
             }
         }
+    </script>
+
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+<link rel="stylesheet" href="styles/home.css">
+<script src="https://unpkg.com/scrollreveal"></script>
+<title>TEDxSIT</title>
+<link rel="icon" href="images/x.ico" type="images/x.ico">
+</head>
+
+<body>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets3.lottiefiles.com/datafiles/80KSTPWWFB6US4g/data.json" background="#262424" speed="0.9" hover loop autoplay></lottie-player>
+    <script>
+        var timer = setTimeout(function() {
+            window.location = '/done'
+        }, 7000);
+    </script>
+</body> -->
+    <!-- <style>
+    #div1 {
+        font-size: 90px;
+        float: right;
     }
-</script>
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->

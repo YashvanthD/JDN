@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<!-- Code By Webdevtrick ( https://webdevtrick.com ) -->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>COG Loading Animation | Webdevtrick.com</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+
+<style>
+    /* Code By Webdevtrick ( https://webdevtrick.com ) */
+    
+    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+    body {
+        height: 100vh;
+        font-family: "Montserrat", sans-serif;
+        text-align: center;
+        overflow: hidden;
+    }
+    
+    body p {
+        margin: 0 auto;
+        font-size: 18px;
+    }
+    
+    body .loader {
+        height: 100%;
+        margin: auto;
+        width: 400px;
+    }
+    
+    body .loader_cogs {
+        width: 100px;
+        height: 100px;
+        top: -120px !important;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    
+    body .COGfirst {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        -webkit-transform-origin: 50px 50px;
+        transform-origin: 50px 50px;
+        -webkit-animation: rotate 10s infinite linear;
+        animation: rotate 10s infinite linear;
+    }
+    
+    body .COGfirst div:nth-of-type(1) {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+    
+    body .COGfirst div:nth-of-type(2) {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+    
+    body .COGfirst div:nth-of-type(3) {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    
+    body .COGfirst div.firstPart {
+        width: 100px;
+        border-radius: 15px;
+        position: absolute;
+        height: 100px;
+        background: #ff4242;
+    }
+    
+    body .COGfirst div.firstHole {
+        width: 50px;
+        height: 50px;
+        border-radius: 100%;
+        background: white;
+        position: absolute;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    
+    body .COGsecond {
+        position: relative;
+        width: 80px;
+        -webkit-transform: rotate(16deg);
+        transform: rotate(16deg);
+        top: 28px;
+        -webkit-transform-origin: 40px 40px;
+        transform-origin: 40px 40px;
+        animation: rotate_left 10s .1s infinite reverse linear;
+        left: -24px;
+        height: 80px;
+    }
+    
+    body .COGsecond div:nth-of-type(1) {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+    
+    body .COGsecond div:nth-of-type(2) {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+    
+    body .COGsecond div:nth-of-type(3) {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    
+    body .COGsecond div.secondPart {
+        width: 80px;
+        border-radius: 10px;
+        position: absolute;
+        height: 80px;
+        background: #208bfd;
+    }
+    
+    body .COGsecond div.secondHole {
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        background: white;
+        position: absolute;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    
+    body .COGthird {
+        position: relative;
+        width: 60px;
+        top: -65px;
+        -webkit-transform-origin: 30px 30px;
+        transform-origin: 30px 30px;
+        -webkit-animation: rotate_left 10.2s .4s infinite linear;
+        animation: rotate_left 10.2s .4s infinite linear;
+        -webkit-transform: rotate(4deg);
+        transform: rotate(4deg);
+        left: 79px;
+        height: 60px;
+    }
+    
+    body .COGthird div:nth-of-type(1) {
+        -webkit-transform: rotate(30deg);
+        transform: rotate(30deg);
+    }
+    
+    body .COGthird div:nth-of-type(2) {
+        -webkit-transform: rotate(60deg);
+        transform: rotate(60deg);
+    }
+    
+    body .COGthird div:nth-of-type(3) {
+        -webkit-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+    
+    body .COGthird div.thirdPart {
+        width: 60px;
+        border-radius: 8px;
+        position: absolute;
+        height: 60px;
+        background: #212121;
+    }
+    
+    body .COGthird div.thirdHole {
+        width: 30px;
+        height: 30px;
+        border-radius: 100%;
+        background: white;
+        position: absolute;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+    }
+    /* Animations */
+    
+    @-webkit-keyframes rotate {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    @keyframes rotate {
+        from {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        to {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    
+    @-webkit-keyframes rotate_left {
+        from {
+            -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+        }
+        to {
+            -webkit-transform: rotate(376deg);
+            transform: rotate(376deg);
+        }
+    }
+    
+    @keyframes rotate_left {
+        from {
+            -webkit-transform: rotate(16deg);
+            transform: rotate(16deg);
+        }
+        to {
+            -webkit-transform: rotate(376deg);
+            transform: rotate(376deg);
+        }
+    }
+    
+    @-webkit-keyframes rotate_right {
+        from {
+            -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+        }
+        to {
+            -webkit-transform: rotate(364deg);
+            transform: rotate(364deg);
+        }
+    }
+    
+    @keyframes rotate_right {
+        from {
+            -webkit-transform: rotate(4deg);
+            transform: rotate(4deg);
+        }
+        to {
+            -webkit-transform: rotate(364deg);
+            transform: rotate(364deg);
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<meta http-equiv="refresh" content="20; url = /done" ?>
+</head>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+    <body onLoad="javascrip:move()" action="done">
+
+        <div class="container">
+            <h2>Machine Training in progress</h2>
+            <p>Wait for some time</p>
+            <div class="progress" id="myProgress">
+                <div id="myBar" class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%">
+
+                </div>
+            </div>
+        </div>
+
+        <div class='loader'>
+            <div class='loader_cogs'>
+                <div class='COGfirst'>
+                    <div class='firstPart'></div>
+                    <div class='firstPart'></div>
+                    <div class='firstPart'></div>
+                    <div class='firstHole'></div>
+                </div>
+                <div class='COGsecond'>
+                    <div class='secondPart'></div>
+                    <div class='secondPart'></div>
+                    <div class='secondPart'></div>
+                    <div class='secondHole'></div>
+                </div>
+                <div class='COGthird'>
+                    <div class='thirdPart'></div>
+                    <div class='thirdPart'></div>
+                    <div class='thirdPart'></div>
+                    <div class='thirdHole'></div>
+                </div>
+                <p>loading..</p>
+            </div>
+        </div>
+
+
+
+        <div>
+            <section class="wrapper">
+                <div class="spinner">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </section>
+
+            <section class="wrapper dark">
+                <div class="spinner">
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                </div>
+            </section>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </body>
+
+    </html>
+
+    <!DOCTYPE html>
+    <html>
+    <style>
+        @import "compass/css3";
+        $colors: #2172b8 #18a39b #82c545 #f8b739 #f06045 #ed2861 #c12680 #5d3191;
+        $inner: 30px;
+        $border: 6px;
+        $spacing: 1px;
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        section.wrapper {
+            padding: 40px 0;
+            &.dark {
+                background: #313134;
+            }
+        }
+        
+        div.spinner {
+            @include animation(rotate 10s infinite linear);
+            position: relative;
+            display: block;
+            margin: auto;
+            $size: $inner + length($colors) * ($border + $spacing) * 2;
+            width: $size;
+            height: $size;
+            i {
+                @include animation( rotate 3s infinite cubic-bezier(.09, .6, .8, .03));
+                @include transform-origin(50%, 100%, 0);
+                position: absolute;
+                display: inline-block;
+                top: 50%;
+                left: 50%;
+                border: solid $border transparent;
+                border-bottom: none;
+                @each $current in $colors {
+                    $i: index($colors, $current);
+                    &:nth-child(#{$i}) {
+                        $size: $inner + $i * ($border + $spacing) * 2;
+                        @include animation-timing-function( cubic-bezier(.09, .3 * $i, .12 * $i, .03));
+                        width: $size;
+                        height: $size / 2;
+                        margin-top: -$size / 2;
+                        margin-left: -$size / 2;
+                        border-color: $current;
+                        border-top-left-radius: $inner + $i * $border;
+                        border-top-right-radius: $inner + $i * $border;
+                    }
+                }
+            }
+        }
+        
+        @include keyframes(rotate) {
+            to {
+                @include rotateZ(360deg);
+            }
+        }
+        
+        #myProgress {
+            width: 100%;
+            background-color: #ddd;
+        }
+        
+        #myBar {
+            width: 1%;
+            height: 30px;
+            background-color: #4CAF50;
+        }
+    </style>
+
+
+
+
+    <script>
+        var i = 0;
+
+        function move() {
+            if (i == 0) {
+                i = 1;
+                var elem = document.getElementById("myBar");
+                var width = 1;
+                var id = setInterval(frame, 3000);
+
+                function frame() {
+                    if (width >= 100) {
+                        clearInterval(id);
+                        i = 0;
+                    } else {
+                        width++;
+                        elem.style.width = width + "%";
+                    }
+                }
+            }
+        }
+    </script>
