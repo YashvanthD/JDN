@@ -144,6 +144,8 @@
 
                         <hr style="width: 100%;">
                         <h2>{{name}}</h2>
+                        <h3 style="font-size: 25px;size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; align-content: unset;float:left;">Patient Details :</h3>
+                        <br>
                         <table class="table ">
                             <tbody>
 
@@ -160,7 +162,7 @@
                                 <tr>
                                     <td>Name</td>
                                     <td>:</td>
-                                    <td>{{name}}</td>
+                                    <td style="size: 25px;">{{name}}</td>
                                 </tr>
                                 <tr>
                                     <td>Gender</td>
@@ -185,7 +187,7 @@
                                 <tr>
                                     <td>dob</td>
                                     <td>:</td>
-                                    <td>{{name}}</td>
+                                    <td>{{dob}}</td>
                                 </tr>
                                 <tr>
                                     <td>Address</td>
@@ -200,7 +202,10 @@
 
                         <hr>
                         <br>
+                        <h3 style="font-size: 25px;size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; align-content: unset;float:left;">Symptoms :</h3>
+                        <br>
                         <table class="table ">
+
                             <td>Fever</td>
                             <td>:</td>
                             <td>{%if fever %} True {% else %} False {% endif %}</td>
@@ -241,8 +246,22 @@
                             </tr>
 
                         </table>
+
                         <hr>
-                        <h2 style="color: {{ color }} ;"> RESULT : {{yellowing_of_eye}}</h2>
+                        <h3 style="font-size: 25px;size: 20px; font-family: Georgia, 'Times New Roman', Times, serif; align-content: unset;float:left;">Result :</h3>
+                        <table class="table ">
+                            <tr>
+
+                                <td>Symptoms</td>
+                                <td>Image Processing</td>
+
+                            </tr>
+                            <tr>
+                                <td>{{score}} % ({{sresult}})</td>
+                                <td>{{yellowing_of_eye_r}}</td>
+                            </tr>
+                        </table>
+                        <h2 style="color: {{ color }} ;"> RESULT : {{fresult}}</h2>
 
 
 

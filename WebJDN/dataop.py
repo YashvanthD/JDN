@@ -7,7 +7,9 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 from os import listdir
 from os.path import isfile, join
-
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas as pd
     
 
 def get_all_values(d):
@@ -62,6 +64,12 @@ def fdata(datan):
 
     return id
 
+
+def dataframecsv():
+    data=pd.read_csv('./media/csvdata/Patient.csv')
+    l=len(data)
+
+
 def getdata():
     f=open('./media/csvdata/Patient.csv','rt')
     data=csv.reader(f)
@@ -70,6 +78,59 @@ def getdata():
         last=row
     return last    
     
+def score(data):
+    minsym=7
+    minsymper=15
+    maxsymper=80
+    avgsymper=5
+    avgsym=3
+    maxsym=4
+    points=0
+    min=minsymper/minsym
+    avg=avgsymper/avgsym
+    max=maxsymper/maxsym
+    order={'min':0,'avg':0,'max':0,'total':0,'ye':0,'type':data.get('type',False)}
+    if(data.get('fever',False)):
+        points=points+min
+    if(data.get('cough',False)):
+        points=points+min
+    if(data.get('headache',False)):
+        points=points+min
+    if(data.get('loss_of_hepatities',False)):
+        points=points+min
+    if(data.get('tierdness',False)):
+        points=points+min
+    if(data.get('diarrhea',False)):
+        points=points+min
+    if(data.get('nausea',False)):
+        points=points+min
 
+    order['min']=points
+   # print(order)
+    if(data.get('abdominal_pain',False)):
+        points=points+avg
+    if(data.get('hitchingskin',False)):
+        points=points+avg
+    if(data.get('hitchingeye',False)):
+        points=points+avg
+    order['avg']=points-order['min']
+
+    
+    if(data.get('yellowingskin',False)):
+        points=points+max
+    if(data.get('yellowingeye',False)):
+        points=points+max
+        order['ye']=1
+    if(data.get('yellowingnails',False)):
+        points=points+max
+    if(data.get('yellowingpalm',False)):
+        points=points+max
+    order['max']=points-order['min']-order['avg']
+    order['total']=points
+    #print(points,order)
+
+
+
+    return order
 
 

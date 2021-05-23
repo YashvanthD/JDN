@@ -21,6 +21,8 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+
+
 urlpatterns = [
     
     path('',views.WebJDN,name='webJDN'),
@@ -29,5 +31,7 @@ urlpatterns = [
     path('wait',views.waiting,name='wait'),
     path('done',views.done,name='done'),
     path('error',views.error,name='error'),
-    
+    path('about',views.about,name='about'),
+    path('check',views.check,name='tcheck'),
+   # path('eyecheck',views.eyecheck,name='eyecheck'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

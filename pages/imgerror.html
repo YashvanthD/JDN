@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta http-equiv="refresh" content="15;url=/AddPatient">
+    <title>JDN</title>
+</head>
+
+<body bgcolor="#c5abc7">
+
+    <center>
+        <header>
+            <h1>Jaundice Detection Using Neural Network</h1>
+        </header>
+
+        </head>
+
+        <section style="color: white;">
+            <nav id="navbar">
+
+
+                <form action="/" method="POST">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%; " type="Submit" value="Home">
+                </form>
+
+                <form action="/wait" method="POST">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%;" type="Submit" value="Train ">
+                </form>
+
+                <form action="/AddPatient " method="POST ">
+                    {% csrf_token %}
+                    <input class="button3" style="width: 100%;" type="Submit" value="Get Report" onclick="move()">
+                </form>
+
+                <button class="button3" onclick=window.location='/about'>About</button>
+
+            </nav>
+
+            <article style="background: #282b2c; ">
+                <table>
+                    <h3 style="color :red;">Sorry... !</h3>
+
+                    <h4 style="color :red;">Image is not Proper <br> It seems to not a eye image <br> please follow the Exmple:
+                        <table>
+                            <tr> <br><br> Make sure provided Single Image <br> </tr>
+                            <tr> Avoid Yellow Back Grounds <br></tr>
+                            <tr> Provide picture as possible in good quality <br></tr>
+                            <br>For Example :
+
+                        </table>
+
+
+                        <div> <img src="../media/data/4/train/yellow/yellow_136.JPG" alt='Example'></div>
+
+
+                        </ul>
+                    </h4>
+                </table>
+            </article>
+
+        </section>
+
+        <footer>
+            By team of Siddaganga Institute of Technology &#169
+        </footer>
+
+
+
+
+</body>
+
+</html>
+
+
+<style>
+    .container2 {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .image2 {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    
+    .overlay2 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .3s ease;
+        background-color: rgba(0, 0, 0, 0);
+        /* Black w/ opacity */
+    }
+    
+    .container2:hover .overlay2 {
+        opacity: 1;
+    }
+    
+    .icon2 {
+        color: rgba(99, 94, 94, 0);
+        font-size: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    
+    .fa-user2:hover {
+        color: #eee;
+    }
+    
+    input[type=radio] {
+        border: 1px;
+        width: 22px;
+        height: 2rem;
+        margin: 9px;
+    }
+    
+    input[type=file] {
+        margin: 10px;
+    }
+    
+    input[type=text],
+    input[type=date],
+    input[type=number],
+    input[type=option],
+    textarea,
+    select {
+        color: black;
+        width: 250px;
+        margin: 10px;
+    }
+    
+    input[type=text]:hover,
+    input[type=date]:hover,
+    input[type=number]:hover,
+    input[type=option]:hover,
+    textarea:hover,
+    select:hover {
+        transform: scale(1.2);
+    }
+    
+    tr {
+        color: rgb(90, 39, 39);
+        width: 100%;
+    }
+    
+    .column {
+        float: left;
+        width: 30%;
+        padding: 0 20px;
+    }
+    /* Remove extra left and right margins, due to padding */
+    
+    .row {
+        width: 100%;
+        margin: 0 50px;
+    }
+    /* Clear floats after the columns */
+    
+    .row:after {
+        content: " ";
+        display: table;
+        clear: both;
+    }
+    /* Responsive columns */
+    
+    @media screen and (max-width: 600px) {
+        .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 10px;
+            margin: 0 0;
+        }
+    }
+    /* Style the counter cards */
+    
+    .card {
+        box-shadow: 0 8px 50px 20px rgba(2, 2, 2, 0.2);
+        padding: 20px;
+        text-align: center;
+        margin: 20px;
+        background-color: #f1f1f1;
+    }
+    
+    .card:hover {
+        box-shadow: 0 80px 160px 0 rgba(245, 0, 0, 0.521);
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .flip-card {
+        background-color: transparent;
+        width: 300px;
+        height: 300px;
+        margin: 20px;
+        perspective: 1000px;
+        box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
+    }
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s;
+        transform-style: preserve-3d;
+        box-shadow: 0 20px 40px 0 rgba(255, 255, 255, 0.219);
+    }
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+        box-shadow: 0 40px 100px 0 rgba(245, 0, 0, 0.521);
+    }
+    
+    .flip-card-front,
+    .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    
+    .flip-card-front {
+        background-color: #bbb;
+        color: black;
+    }
+    
+    .flip-card-back {
+        background-color: #08f543a9;
+        color: rgb(0, 0, 0);
+        transform: rotateY(180deg);
+    }
+    
+    nav {
+        float: left;
+        width: 20%;
+        height: 3000px;
+        /* only for demonstration, should be removed */
+        background: #ccc;
+        padding: 20px;
+    }
+    
+    nav ul {
+        list-style-type: none;
+    }
+    
+    article {
+        float: left;
+        padding: 20px;
+        height: 3000px;
+        width: 80%;
+        background: rgb(248, 237, 237);
+        /* only for demonstration, should be removed */
+    }
+    /* Clear floats after the columns */
+    
+    section::after {
+        content: " ";
+        display: table;
+        clear: both;
+        height: 200%;
+        width: 80%;
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    /* The grid: Three equal columns that floats next to each other */
+    
+    .column1 {
+        float: left;
+        width: 33.33%;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        cursor: pointer;
+        color: white;
+    }
+    
+    .containerTab1 {
+        padding: 20px;
+        color: white;
+    }
+    /* Clear floats after the columns */
+    
+    .row1:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /* Closable button inside the container tab */
+    
+    .closebtn1 {
+        float: right;
+        color: white;
+        font-size: 40px;
+        cursor: pointer;
+    }
+    
+    .header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    #navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    
+    .content {
+        padding: 16px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 60px;
+    }
+    
+    #myProgress {
+        width: 100%;
+        background-color: #ddd;
+    }
+    
+    #myBar {
+        width: 1%;
+        height: 30px;
+        background-color: #4CAF50;
+    }
+    
+    .button {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 28px;
+        padding: 20px;
+        width: 200px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+    }
+    
+    .button span {
+        cursor: pointer;
+        display: inline-block;
+        position: relative;
+        transition: 0.5s;
+    }
+    
+    .button span:after {
+        content: '\00bb';
+        position: absolute;
+        opacity: 0;
+        top: 0;
+        right: -20px;
+        transition: 0.5s;
+    }
+    
+    .button:hover span {
+        padding-right: 25px;
+    }
+    
+    .button:hover span:after {
+        opacity: 1;
+        right: 0;
+    }
+    
+    .button2 {
+        position: relative;
+        background-color: #4CAF50;
+        border: none;
+        font-size: 18px;
+        color: #FFFFFF;
+        padding: 20px;
+        width: 100%;
+        text-align: center;
+        transition-duration: 0.1s;
+        text-decoration: none;
+        overflow: hidden;
+        cursor: pointer;
+    }
+    
+    .button2:after {
+        content: " ";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.2s
+    }
+    
+    .button2:active:after {
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s;
+    }
+    
+    .button3 {
+        display: inline-block;
+        padding: 15px 25px;
+        width: 100%;
+        font-size: 24px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 0px;
+        box-shadow: 0 15px #333;
+    }
+    
+    .button3:hover {
+        background-color: #3e8e41
+    }
+    
+    .button3:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+    
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    /* Style the header */
+    
+    header {
+        background-color: #666;
+        padding: 30px;
+        text-align: center;
+        font-size: 35px;
+        color: white;
+    }
+    /* Create two columns/boxes that floats next to each other */
+    /* Style the list inside the menu */
+    /* Style the footer */
+    
+    input.button {
+        width: 20%;
+        height: 20px;
+    }
+    
+    footer {
+        background-color: rgba(71, 71, 71, 0.349);
+        padding: 10px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        color: white;
+    }
+    /* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+    
+    @media (max-width: 600px) {
+        nav,
+        article {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .header {
+        background-color: #f1f1f1;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    #navbar {
+        overflow: hidden;
+        background-color: #333;
+    }
+    
+    #navbar a {
+        float: left;
+        display: block;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    
+    #navbar a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+    
+    #navbar a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+    
+    .content {
+        padding: 16px;
+    }
+    
+    .sticky {
+        position: fixed;
+        top: 0;
+        width: 100%;
+    }
+    
+    .sticky+.content {
+        padding-top: 60px;
+    }
+</style>
+
+
+
+
+
+</center>
+
+</body>
+
+</html>

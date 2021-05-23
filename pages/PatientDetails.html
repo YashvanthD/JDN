@@ -80,8 +80,8 @@
                                 <tr>
                                     <td>Patient Type</td>
                                     <td>:</td>
-                                    <td><select name="type"><option value="infant">Infant(new Born Baby)</option>
-                            <option value="adult">Adults</option></select></td>
+                                    <td><select name="type"> <option value="adult">Adults</option>
+                                        <option value="infant">Infant(new Born Baby)</option></select></td>
                                 </tr>
                                 <tr>
                                     <td>Name</td>
@@ -247,27 +247,46 @@
                             </table>
                             <br>
                             <table>
+                                <col span="1" style="width: 40%;align-content: center;">
                                 <tr>
+                                    <th>Images</th>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                    <td>Eye</td>
+                                    <td> : </td>
+                                    <td><input id="image" type="file" name="eyeimg" id="userimg" value="imgs" required>
+                                    </td>
+                                </tr>
 
-                                    <b>Images</b>
-                                    <tr>
-                                        <td>Eye</td>
-                                        <td> : </td>
-                                        <td><input id="image" type="file" name="eyeimg" required>
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                <!-- <tr>
                                         <td>Skin</td>
                                         <td> : </td>
                                         <td><input type="file" name="skinimg">
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tr>
                                 <tr>
 
                                 </tr>
 
                             </table>
+                            <hr style="width: 30%;">
+
+                            <br><br>
+                            <div style="color :red; font-size: 18px;">
+                                NOTE: <br> Avoid yellow backgrounds. <br> Capture with single eye. </div><br>
+                            <div class="container2" onmousemove="user()">
+                                <div class="image2" style="  width:250px;height:40px; font-size: 18px;"> <br>For Example </div>
+                                <div class="overlay2">
+                                    <a class="icon2" title="Example">
+                                        <img src="../media/data/4/train/yellow/yellow_136.JPG" alt="Avatar" class="image">
+                                        <img class=" image2" id="usimg">
+                                    </a>
+                                </div>
+                            </div>
+                            <br><br>
 
                             <hr style="width: 30%;">
                             <input class="button3" type="submit" name="submit" value="Get Report" style="background: green;font: 25px;color:white; height: inherit; width: 300px;">
@@ -313,13 +332,80 @@
 </html>
 
 <!DOCTYPE html>
+
 <html>
+<script>
+    var img = document.getElementById("userimg");
+    var modalImg = document.getElementById("img01");
+
+    function userimg() {
+        document.getElementById("img01").src = img.eyeimg;
+
+    }
+
+    function user() {
+        var x = document.getElementById("userimg");
+        var defaultVal = '/';
+        var currentVal = x.value;
+
+        if (defaultVal == currentVal) {
+            document.getElementById("usimg").innerHTML.src = defaultVal;
+        } else {
+            document.getElementById("usimg").innerHTML.src = currentVal;
+        }
+    }
+</script>
 <style>
+    .container2 {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+    }
+    
+    .image2 {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    
+    .overlay2 {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition: .3s ease;
+        background-color: rgba(0, 0, 0, 0);
+        /* Black w/ opacity */
+    }
+    
+    .container2:hover .overlay2 {
+        opacity: 1;
+    }
+    
+    .icon2 {
+        color: rgba(99, 94, 94, 0);
+        font-size: 100px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    
+    .fa-user2:hover {
+        color: #eee;
+    }
+    
     input[type=radio] {
-        border: 2px;
-        width: 25px;
-        height: 3rem;
-        margin: 10px;
+        border: 1px;
+        width: 22px;
+        height: 2rem;
+        margin: 9px;
     }
     
     input[type=file] {
